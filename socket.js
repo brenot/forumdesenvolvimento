@@ -12,9 +12,6 @@ redis.on('message', function(channel, message)
 {
     message = JSON.parse(message);
 
-    console.log(message);
-    console.log(message.event);
-    console.log(message.data.message);
     io.emit(channel + ':' + message.event, message.data);
 });
 
