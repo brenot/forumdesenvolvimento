@@ -1,0 +1,23 @@
+var server = require('http').Server();
+
+var io = require('socket.io')(server);
+
+var Redis = require('ioredis');
+
+var redis = new Redis();
+
+redis.subscribe('chat-channel');
+
+redis.on('message', function(channel, message)
+{
+    message = JSON.parse(message);
+
+    console.log(message);
+    console.log(message.event);
+    console.log(message.data.message);
+    io.emit(channel + ':' + message.event, message.data);
+});
+
+console.log('listening...');
+
+server.listen(3000);
