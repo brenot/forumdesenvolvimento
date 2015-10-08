@@ -9,9 +9,12 @@ Route::get('/', function () {
 
 Route::get('import', ['uses' => 'ImporterController@import']);
 
-Route::get('redis', function ()
+Route::get('chat', function ()
 {
-	event(new ChatMessageSent(Input::get('username'), Input::get('message')));
+	return view('chat.index')->with('username', Input::get('username'));
+});
 
-	return view('chat.index');
+Route::get('chat/send/{username}/{message}', function ($username, $message)
+{
+	event(new ChatMessageSent($username, $message));
 });
