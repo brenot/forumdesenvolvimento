@@ -20,48 +20,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.1.16/vue-resource.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.min.js"></script>
 
-        <script>
-            var socket = io('{{ url() . ':3000' }}');
-
-            new Vue(
-            {
-                el: 'body',
-
-                data: {
-                    messages: [],
-                    currentUser: '{{ $username }}',
-                    currentMessage: '',
-                },
-
-                methods:
-                {
-                    __sendMessage: function(event) {
-                        var user = event.targetVM.$data.currentUser;
-
-                        var message = event.targetVM.$data.currentMessage;
-
-                        this.$http.get('{{ url() }}/chat/send/'+user+'/'+message);
-                    }
-                },
-
-                ready: function()
-                {
-                    socket.on('chat-channel:App\\Services\\Chat\\Events\\ChatMessageSent', function(data)
-                    {
-                        var isOperator = data.username == "Alo Alerj";
-
-                        var message = {
-                            "isOperator": isOperator,
-                            "username": data.username,
-                            "message": data.message,
-                            "pull": isOperator ? 'left' : 'right',
-                            "photo": isOperator ? 'logo-alo-alerj-50px.png' : 'voce.png',
-                        };
-
-                        this.messages.push(message);
-                    }.bind(this));
-                }
-            });
-        </script>
+        @include('pragmarx/sdk::chat.code')
     </body>
 </html>

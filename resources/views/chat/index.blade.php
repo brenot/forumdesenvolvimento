@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('contents')
-    <h1>{{ $username }}</h1>
+    <h1>{{ $chatterUsername }}</h1>
 
     <div class="container">
         <div class="row">
