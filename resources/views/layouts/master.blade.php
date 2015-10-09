@@ -30,7 +30,7 @@
                 data: {
                     messages: [],
                     currentUser: '{{ $username }}',
-                    typedMessage: '',
+                    currentMessage: '',
                 },
 
                 methods:
