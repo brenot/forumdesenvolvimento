@@ -10,6 +10,7 @@
     <body>
         <div class="container">
             <div class="content">
+                @include('notifications.flash')
                 @yield('contents')
             </div>
         </div>
@@ -19,7 +20,5 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.16/vue.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.1.16/vue-resource.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.min.js"></script>
-
-        @include('pragmarx/sdk::chat.code')
     </body>
 </html>
