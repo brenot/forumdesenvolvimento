@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<japroduct>
+  <type>module</type>
+  <name>JA Masshead</name>
+  <extKey>mod_jamasshead</extKey>
+  <version>2.6.1</version>
+  <date>Thu, 03 Dec 2015 13:40:30 -0200</date>
+  <crc>
+    <![CDATA[
+      {"asset":{"elements":{"japanel":{"images":{"arrow-blue.png":"e615d7872fb62ad3dddfe7b193aeaea1","arrow-level1.png":"fe33a676cfd26beb29dd4aae3172dd25","arrow-list.gif":"b0de2cda92a1097507664108d1e0e1ae","index.html":"1c7b413c3fa39d0fed40556d2658ac73"},"depend.js":"670428a3545ff7fe9bbb488357102aae","script.js":"76785408a651cd95d9e95ff6a4006a18","script30.js":"d6fc349634850032d3d4176ef62c117b","style.css":"b3928e792486cb4212cec22aabc9adae","style30.css":"05e262b3f320012844903fd14103a395"},"index.html":"1c7b413c3fa39d0fed40556d2658ac73","japanel.php":"ea9fde379c8f1aade60351e0eaeaf9d5"},"jquery":{"chosen":{"chosen-sprite.png":"8e70d120437ffc6a1bf7cebeca292d5c","chosen-sprite@2x.png":"cb0d09c93b99c5cab6848147fdb3d7e4","chosen.css":"68002537a9db90191c903d5f753d15e0","chosen.jquery.js":"b533e62f21dd82ce415375b54d5d0fc8","jquery.actual.min.js":"cd791cecc959916ff3a2d6cb5b7b21b2"},"jquery-noconflict.js":"e2060c4e5e5955c824723b13a212d3ec","jquery.easing.1.3.js":"6516449ed5089677ed3d7e2f11fc8942","jquery.min.js":"c20812cc1b958ac1222f87d791bb3613","jquery.ui.core.min.js":"133fb19b0eeab67f872d759eb106db82"},"behavior.php":"0bb5ddc1cf095a525f6f6b61859e0875","index.html":"1c7b413c3fa39d0fed40556d2658ac73"},"tmpl":{"default.php":"b0df42da9fc0fc57a04a7ac9af2ec33f","index.html":"1c7b413c3fa39d0fed40556d2658ac73"},"helper.php":"4c646dc99dd4b0be31c5b2c9c3baefcf","index.html":"1c7b413c3fa39d0fed40556d2658ac73","mod_jamasshead.php":"348b2b2c9f908c949bcec91ef14ed470","mod_jamasshead.xml":"651ca948abed180cd3e374c0409e2f29"}
+    ]]>
+  </crc>
+</japroduct>
