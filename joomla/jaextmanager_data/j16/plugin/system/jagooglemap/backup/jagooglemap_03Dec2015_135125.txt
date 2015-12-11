@@ -1,0 +1,4 @@
+extKey=jagooglemap
+version=2.6.0
+createDate=2015-12-03 13:51:25
+comment=Upgrade to version 2.6.2 - Dated 03/12/2015 13:51:21

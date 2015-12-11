@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<japroduct>
+  <type>plugin</type>
+  <name>System - JA Google Map</name>
+  <extKey>jagooglemap</extKey>
+  <version>2.6.0</version>
+  <date>Thu, 03 Dec 2015 13:51:26 -0200</date>
+  <crc>
+    <![CDATA[
+      {"assets":{"elements":{"jaitems":{"icon-32-advanced.png":"242ba86a2760a229ed44d9ee453db2ba","icon-add.png":"0d76730c2d5910bc021b6890f3c1526c","icon-remove.png":"f62668357bf7f25508e6f9a5ea6f07a9","jalist.js":"81678ef920ee9f9f298077379efa56d9","script.js":"f96212c9a2399a69a09f4948f0a44798","style.css":"f1c2e241a2e0f49993894725e4012273"},"japanel":{"images":{"arrow-blue.png":"e615d7872fb62ad3dddfe7b193aeaea1","arrow-level1.png":"fe33a676cfd26beb29dd4aae3172dd25","arrow-list.gif":"b0de2cda92a1097507664108d1e0e1ae","index.html":"1c7b413c3fa39d0fed40556d2658ac73"},"depend.js":"633d59e6b39d23482b7616bd617ea833","script.js":"76785408a651cd95d9e95ff6a4006a18","script30.js":"d6fc349634850032d3d4176ef62c117b","style.css":"865e16a4526a28cd5a49efdcc20dcbb9","style30.css":"8ab31c2095698822965c456151e4b8af"},"index.html":"1c7b413c3fa39d0fed40556d2658ac73","jaitems.php":"a2f1aeb21992c79d93d85cf34a539891","jamap.php":"d3bde7c3b5c6492ac61a40bd022dc823","japanel.php":"d94b2fc3613ba6e3405dfd1f20651294","opts.php":"99f802ae931f8b24b1a47d8cf21e25be"},"jquery":{"chosen":{"chosen-sprite.png":"8e70d120437ffc6a1bf7cebeca292d5c","chosen-sprite@2x.png":"cb0d09c93b99c5cab6848147fdb3d7e4","chosen.css":"68002537a9db90191c903d5f753d15e0","chosen.jquery.js":"b533e62f21dd82ce415375b54d5d0fc8","jquery.actual.min.js":"cd791cecc959916ff3a2d6cb5b7b21b2"},"jquery-noconflict.js":"e2060c4e5e5955c824723b13a212d3ec","jquery.easing.1.3.js":"6516449ed5089677ed3d7e2f11fc8942","jquery.min.js":"c20812cc1b958ac1222f87d791bb3613","jquery.ui.core.min.js":"133fb19b0eeab67f872d759eb106db82"},"behavior.php":"0b70447e477b7e16b53a416d8bede757","index.html":"1c7b413c3fa39d0fed40556d2658ac73","jagencode.js":"220f07f789931af5777c14c3ba480e99","script.js":"c4bba3dceaf08a1bf36d177ccdf5aab7","style.css":"4a00dc572689d60c5a5f46c5b4d362d9"},"layouts":{"items.php":"388e43ca5599ab58c81e62289313c4ac"},"tmpl":{"default.php":"ca2f255ffb7db252d41861c1ec877f82","index.html":"1c7b413c3fa39d0fed40556d2658ac73"},"index.html":"1c7b413c3fa39d0fed40556d2658ac73","jagooglemap.php":"8dd2d9935d61715b45186050be71fa34","jagooglemap.xml":"9caa5213be8f8f663f03d4bf52c25bb7"}
+    ]]>
+  </crc>
+</japroduct>
