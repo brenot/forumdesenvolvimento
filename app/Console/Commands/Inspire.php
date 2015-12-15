@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\ImporterController;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;
 
@@ -12,7 +13,7 @@ class Inspire extends Command
      *
      * @var string
      */
-    protected $signature = 'inspire';
+    protected $signature = 'import';
 
     /**
      * The console command description.
@@ -28,6 +29,8 @@ class Inspire extends Command
      */
     public function handle()
     {
-        $this->comment(PHP_EOL.Inspiring::quote().PHP_EOL);
+        $controller = new ImporterController();
+
+        $controller->import();
     }
 }
