@@ -16,9 +16,16 @@ class ImporterController extends Controller
 {
 	private $numbers = [];
 
+    public function __construct()
+    {
+        $this->numbers['rightleft_asset'] = Asset::max('id');
+    }
+
 	public function import()
 	{
 		DB::beginTransaction();
+
+        \Log::info('import()');
 
 		foreach (Publicacao::all() as $publicacao)
 		{
@@ -49,12 +56,24 @@ class ImporterController extends Controller
 				$publicacao->urlYouTube3,
 				$publicacao->urlYouTube4,
 				$publicacao->urlYouTube5,
-			]
+			],
+            [
+                $publicacao->urlPDF1,
+                $publicacao->urlPDF2,
+                $publicacao->urlPDF3,
+            ],
+            [
+                $publicacao->linkInternet2_1 => $publicacao->txtLinkInternet2_1,
+                $publicacao->linkInternet2_2 => $publicacao->txtLinkInternet2_2,
+                $publicacao->linkInternet2_3 => $publicacao->txtLinkInternet2_3,
+                $publicacao->linkInternet2_4 => $publicacao->txtLinkInternet2_4,
+                $publicacao->linkInternet2_5 => $publicacao->txtLinkInternet2_5,
+            ]
 		);
 
 		$content->state = 1;
 
-		$content->catid = 85;
+		$content->catid = 137;
 
 		$content->created = $publicacao->dataHoraPublicacao;
 		$content->created_by = 545;
@@ -90,7 +109,7 @@ class ImporterController extends Controller
 		return Content::first();
 	}
 
-	private function createFullText($publicacao, $videos)
+	private function createFullText($publicacao, $videos, $pdfs, $links)
 	{
 		foreach ($videos as $video)
 		{
@@ -107,6 +126,22 @@ class ImporterController extends Controller
 				$publicacao .= '<br>' . '<img src="'.$publicacao['urlFoto'.$index].'">'.$publicacao['creditoFoto'.$index];
 			}
 		}
+
+        foreach ($links as $url => $caption)
+        {
+            if ($caption)
+            {
+                $publicacao .= '<br>' . '<a href="'.$url.'">'.$caption.'</a>';
+            }
+        }
+
+        foreach ($pdfs as $url)
+        {
+            if ($caption)
+            {
+                $publicacao .= '<br>' . '<a href="'.$url.'">Leia a transcrição completa do evento [PDF]</a>';
+            }
+        }
 
 		return $publicacao ?: '';
 	}
@@ -224,15 +259,22 @@ class ImporterController extends Controller
 	{
 		$asset = new Asset();
 
-		$asset->parent_id = 403;
-		$asset->lft = $this->getNextIndex('rightleft_asset');
-		$asset->rgt = $this->getNextIndex('rightleft_asset');
+		$asset->parent_id = Asset::max('id');
+//		$asset->lft = $this->getNextIndex('rightleft_asset');
+//		$asset->rgt = $this->getNextIndex('rightleft_asset');
 		$asset->level = 3;
-		$asset->name = 'com_content.article.'.$content->id;
+		$asset->name = 'com_content.article.'.($content->id+10000000);
 		$asset->title = $content->title;
-		$asset->rules = '{}';
+		$asset->rules = '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}';
 
 		$asset->save();
+
+		$asset->lft = $asset->id-1;
+		$asset->rgt = $asset->id+1;
+
+        $asset->save();
+
+        echo "content: $content->id -- asset: $asset->id -- parent_id: $asset->parent_id -- lft: $asset->lft -- rgt: $asset->rgt\n";
 
 		return $asset;
 	}
