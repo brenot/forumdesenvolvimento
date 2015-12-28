@@ -3,7 +3,7 @@
  * NoNumber Framework Helper File: Protect
  *
  * @package         NoNumber Framework
- * @version         15.11.2132
+ * @version         15.12.7724
  *
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
@@ -14,6 +14,7 @@
 defined('_JEXEC') or die;
 
 require_once __DIR__ . '/cache.php';
+require_once __DIR__ . '/text.php';
 
 class NNProtect
 {
@@ -217,7 +218,7 @@ class NNProtect
 	 */
 	private static function protectByRegex(&$string, $regex)
 	{
-		if (preg_match_all($regex, $string, $matches) < 1)
+		if (!preg_match_all($regex, $string, $matches))
 		{
 			return;
 		}
@@ -303,7 +304,7 @@ class NNProtect
 
 		$regex = '#' . preg_quote('{' . self::$sourcerer_tag, '#') . '[\s\}].*?' . preg_quote('{/' . self::$sourcerer_tag . '}', '#') . '#si';
 
-		if (preg_match_all($regex, $string, $matches) < 1)
+		if (!preg_match_all($regex, $string, $matches))
 		{
 			return;
 		}
@@ -368,7 +369,7 @@ class NNProtect
 
 		$form_parts = explode('</form>', $string, 2);
 		// protect tags only inside form fields
-		if (preg_match_all('#(?:<textarea[^>]*>.*?<\/textarea>|<input[^>]*>)#si', $form_parts['0'], $matches) < 1)
+		if (!preg_match_all('#(?:<textarea[^>]*>.*?<\/textarea>|<input[^>]*>)#si', $form_parts['0'], $matches))
 		{
 			return;
 		}
@@ -390,7 +391,7 @@ class NNProtect
 	public static function unprotect(&$string)
 	{
 		$regex = '#' . preg_quote(self::$protect_a, '#') . '(.*?)' . preg_quote(self::$protect_b, '#') . '#si';
-		while (preg_match_all($regex, $string, $matches, PREG_SET_ORDER) > 0)
+		while (preg_match_all($regex, $string, $matches, PREG_SET_ORDER))
 		{
 			foreach ($matches as $match)
 			{
@@ -418,7 +419,7 @@ class NNProtect
 
 		foreach ($tags as $i => $tag)
 		{
-			if (ctype_alnum($tag['0']))
+			if (!NNText::is_alphanumeric($tag['0']))
 			{
 				continue;
 			}
@@ -533,7 +534,7 @@ class NNProtect
 			$html_tags = array($html_tags);
 		}
 
-		if (preg_match_all('#(<(' . implode('|', $html_tags) . ')(?:\s[^>]*?)>)(.*?)(</\2>)#si', $string, $matches, PREG_SET_ORDER) < 1)
+		if (!preg_match_all('#(<(' . implode('|', $html_tags) . ')(?:\s[^>]*?)>)(.*?)(</\2>)#si', $string, $matches, PREG_SET_ORDER))
 		{
 			return;
 		}
@@ -561,7 +562,7 @@ class NNProtect
 			$attributes = array($attributes);
 		}
 
-		if (preg_match_all('#\s(?:' . implode('|', $attributes) . ')\s*=\s*".*?"#si', $string, $matches) < 1)
+		if (!preg_match_all('#\s(?:' . implode('|', $attributes) . ')\s*=\s*".*?"#si', $string, $matches))
 		{
 			return;
 		}

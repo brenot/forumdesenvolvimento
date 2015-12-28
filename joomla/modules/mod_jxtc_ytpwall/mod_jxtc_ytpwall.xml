@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension type="module" version="1.6.0" method="upgrade">
+  <name>JoomlaXTC YouTube Playlist Wall Module</name>
+  <author>JoomlaXTC</author>
+  <creationDate>2015-08-05</creationDate>
+  <copyright>Copyright (C) 2015 Monev Software LLC. All rights reserved.</copyright>
+  <license>Dual GNU/GPL v2.0 and http://www.joomlaxtc.com/license JoomlaXTC Proprietary Use License</license>
+  <authorUrl>http://www.joomlaxtc.com</authorUrl>
+  <version>1.6.0</version>
+  <description>JoomlaXTC YouTube Playlist Wall Module - Visit www.joomlaxtc.com documents area for more help.</description>
+  <files>
+    <filename module="mod_jxtc_ytpwall">mod_jxtc_ytpwall.php</filename>
+    <folder>elements</folder>
+    <folder>templates</folder>
+    <folder>js</folder>
+  </files>
+  <config>
+    <fields name="params" addfieldpath="/modules/mod_jxtc_ytpwall/elements">
+    	<fieldset name="basic">
+        <field name="apiKey" type="text" class="input-xxlarge" label="API Key" description="Enter your YouTube API key." />
+        <field name="playList" type="ytplaylist" label="Playlist ID" description="Enter the Playlist ID or select one from a channel (not all lists are available on all channels)." />
+        <field name="columns" type="text" default="3" class="input-mini" label="Columns" description="How many videos to show per row." />
+        <field name="rows" type="text" default="1" class="input-mini" label="Rows" description="How many video rows to show." />
+
+				<field name="template" type="xtstemplate" default="" label="Template" description="Select an exisiting module template. If none used, the following fields will be used." />
+			  <field name="moduletemplate" type="textarea" filter="RAW" rows="10" cols="40" default="{player}{grid}" label="Module HTML template" description="HTML/CSS markup for the entire module. Read documentation for list of available tags." />
+			  <field name="itemtemplate" type="textarea" filter="RAW" rows="10" cols="40" default="{default_image}" label="Item HTML template" description="HTML/CSS code to display each video. Read documentation for list of available tags." />
+        <field name="width" type="text" default="640" label="Player Width" description="The width of the player" />
+        <field name="height" type="text" default="360" label="Player Height" description="The height of the player" />
+        <field name="autoplay" type="radio" class="btn-group" default="0" label="Auto play video?" description="Enable or disable autoplay of the first video in the channel." >
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+      	</field>
+        <field name="autohide" type="radio" class="btn-group" default="0" label="Auto hide controls?" description="Hide controls automatically." >
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+      	</field>
+        <field name="controls" type="radio" class="btn-group" default="1" label="Show Controls?" description="Set control behavior." >
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+      	</field>
+        <field name="disablekb" type="radio" class="btn-group" default="0" label="Disable keyboard?" description="Enable or disable keyboard controls." >
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+      	</field>
+        <field name="fs" type="radio" class="btn-group" default="1" label="Allow full screen?" description="Enable or disable fullscreen mode." >
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+      	</field>
+        <field name="iv_load_policy" type="radio" class="btn-group" default="1" label="Show annotations?" description="Enable or disable video annotations." >
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+      	</field>
+        <field name="rel" type="radio" class="btn-group" default="0" label="Show related videos?" description="Enable or disable related videos to appear when video playback ends." >
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+      	</field>
+        <field name="showinfo" type="radio" class="btn-group" default="1" label="Show info?" description="Show video details such as name, author and sharing options on the player." >
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+      	</field>
+        <field name="theme" type="list" class="btn-group" default="dark" label="Theme" description="Select player theme." >
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+      	</field>
+        <field name="color" type="list" default="red" label="Progress bar color" description="Set color of progress bar." >
+          <option value="red">Red</option>
+          <option value="white">White</option>
+      	</field>
+      </fieldset>
+    	<fieldset name="advanced">
+			  <field name="css" type="textarea" filter="RAW" rows="10" cols="40" default="" label="Custom CSS" description="Optional CSS code to include." />
+				<field name="jquery" type="list" default="2" label="jQuery load" description="Choose jQuery load method.">
+					<option value="0">None</option>
+					<option value="1">Latest from Google</option>
+					<option value="2">Local copy</option>
+				</field>
+        <field name="scrollTo" type="text" default="#jxtcytpwplayer" label="Scroll-to element" description="If set, the page will scroll to this HTML element when clicking on a video. Leave empty to disable the effect. A value of #jxtcytpwplayer will scroll to the video player." />
+        <field name="scrollToSpeed" type="text" default="500" label="Scroll-to speed" description="Speed (in milliseconds) of Scroll-to effect." />
+
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="textarea" rows="3" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache" type="list" default="0" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+      </fieldset>
+    </fields>
+  </config>
+</extension>

@@ -3,7 +3,7 @@
  * NoNumber Framework Helper File: Functions
  *
  * @package         NoNumber Framework
- * @version         15.11.2132
+ * @version         15.12.7724
  *
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
@@ -159,8 +159,8 @@ class NNFrameworkFunctions
 
 	public static function getNameByAlias($alias)
 	{
-		// Alias has an underscore, so is a language string
-		if (strpos($alias, '_') !== false)
+		// Alias is a language string
+		if (strpos($alias, ' ') === false && strtoupper($alias) == $alias)
 		{
 			return JText::_($alias);
 		}
@@ -357,7 +357,9 @@ class NNFrameworkFunctions
 
 	static function getExtensionPath($extension = 'plg_system_nnframework', $basePath = JPATH_ADMINISTRATOR, $check_folder = '')
 	{
-		if (!in_array($basePath, array('', JPATH_ADMINISTRATOR, JPATH_SITE)))
+		$basePath = $basePath ?: JPATH_SITE;
+
+		if (!in_array($basePath, array(JPATH_ADMINISTRATOR, JPATH_SITE)))
 		{
 			return $basePath;
 		}

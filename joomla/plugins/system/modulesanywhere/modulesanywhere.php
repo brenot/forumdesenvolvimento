@@ -3,7 +3,7 @@
  * Main File
  *
  * @package         Modules Anywhere
- * @version         4.1.2
+ * @version         4.1.3
  *
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
