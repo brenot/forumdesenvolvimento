@@ -3,7 +3,7 @@
  * Plugin Helper File
  *
  * @package         Modules Anywhere
- * @version         4.1.2
+ * @version         4.1.3
  *
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
@@ -461,7 +461,7 @@ class PlgSystemModulesAnywhereHelper
 		{
 			if (!$chrome)
 			{
-				$chrome = ($forcetitle) ? 'xhtml' : $this->params->style;
+				$chrome = ($forcetitle && $this->params->style == 'none') ? 'xhtml' : $this->params->style;
 			}
 
 			// module

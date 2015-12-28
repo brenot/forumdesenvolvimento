@@ -2,7 +2,7 @@
  * JavaScript file for Element: ColorPicker
  *
  * @package         NoNumber Framework
- * @version         15.11.2132
+ * @version         15.12.7724
  *
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
