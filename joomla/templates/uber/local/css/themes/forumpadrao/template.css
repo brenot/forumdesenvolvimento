@@ -10715,7 +10715,6 @@ fieldset[disabled] .books-view span.addtocart-button input.notify-button.active 
 }
 .rioemfocopag table {
   display: block;
-  background: #0f0 !important;
 }
 .rioemfocopag tr:nth-child(odd) {
   margin-bottom: 20px !important;
