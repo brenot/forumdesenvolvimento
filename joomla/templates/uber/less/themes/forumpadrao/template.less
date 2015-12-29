@@ -532,10 +532,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecf0f1', end
 }*/
 
 /* YoutubeGallery - BRENO  */
-.rioemfocopag table img {
-    height: 100% !important;
-    width: 100% !important;
-}
+
 
 .rioemfocopag h3 {
     font-size: 26px !important;
@@ -545,15 +542,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecf0f1', end
     font-size: 18px !important;
     line-height: 1.3 !important;
 }
-
-.rioemfocopag table span {
-    font-size: 13px !important;
-    font-weight: 400 !important;
-    display: block !important;
-    margin-top: 10px !important;
-    padding: 10px !important;
-}
-
 .rioemfocopag object {
     border: none !important;
     -moz-box-shadow: none !important;
@@ -573,23 +561,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecf0f1', end
     width: 100% !important;*/
 }
 
+
+
+.rioemfocopag table{
+    display: block;
+}
+
+
+.rioemfocopag tr:nth-child(odd){
+    margin-bottom: 20px !important;
+    display: block;
+}
+
+
+.rioemfocopag  table tr:nth-child(even){
+    background: #f0f !important;
+    display: none !important;
+}
+
+
+
 .rioemfocopag table th{
     line-height: 1.2 !important;
 }
 
-.rioemfocopag table td {
-    line-height: 1.2 !important;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4e4e4+0,f1f1f1+100 */
-    background: #e4e4e4; /* Old browsers */
-    background: -moz-linear-gradient(top, #e4e4e4 0%, #f1f1f1 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #e4e4e4 0%,#f1f1f1 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #e4e4e4 0%,#f1f1f1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4e4e4', endColorstr='#f1f1f1',GradientType=0 ); /* IE6-9 */
-
-    border-bottom: 1px solid #ccc!important;
-    min-height: 100px;
-    border-right: 15px #fff solid !important;
-}
 
 
 .rioemfocopag table td:hover {
@@ -602,20 +597,52 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', end
 
 }
 
+
+
+.rioemfocopag table td {
+    line-height: 1.2 !important;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4e4e4+0,f1f1f1+100 */
+    background: #e4e4e4; /* Old browsers */
+    background: -moz-linear-gradient(top, #e4e4e4 0%, #f1f1f1 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #e4e4e4 0%,#f1f1f1 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #e4e4e4 0%,#f1f1f1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4e4e4', endColorstr='#f1f1f1',GradientType=0 ); /* IE6-9 */
+    border-bottom: 1px solid #ccc!important;
+    min-height: 100px;
+    border-left: 10px solid #fff !important;
+    border-right: 10px solid #fff !important;
+    /*padding-right: 15px !important;*/
+    display: inline-block !important;
+}
+
 .rioemfocopag table td:last-child {
-    border-right: none  !important; 
-}
-
-.rioemfocopag tr:nth-child(odd){
-    margin-bottom: 20px !important;
-    display: block;
+    /*border-right: 0px !important;
+    padding-right: 0px !important;    */
 }
 
 
-.rioemfocopag  table tr:nth-child(even){
-    background: #f0f !important;
-    display: none !important;
+
+
+.rioemfocopag table img {
+    height: 100% !important;
+    width: 100% !important;
 }
+
+
+.rioemfocopag table span {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    display: block !important;
+    margin-top: 10px !important;
+    padding: 10px !important;
+    min-height: 70px !important;
+}
+
+
+
+
+
+
 
 /* FIM - YoutubeGallery - BRENO  */
 
