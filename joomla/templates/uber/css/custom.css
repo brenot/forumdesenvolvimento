@@ -2,44 +2,24 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
-   .acm-slideshow .style-3 .slide-desc {
-        color:  #0f0 !important;
-        background: none repeat scroll 0 0 !important;
-        margin-left: -26px;
-        margin-right: -26px;
-        padding: 40px;
-        text-align: left;
-        height: 350px !important;
+
+    .acm-slideshow .style-3 .slide-desc {
+    background: #d8e2e8 none repeat scroll 0 0 !important;
+    color: #01426a !important;
+    height: 400px !important;
+    margin-left: -26px;
+    margin-right: -26px;
+    padding: 40px;
+    text-align: left;
+
     }
 
 
-}
 
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) { 
-
-
-    .midias-sociais .section-title {
-        background: #0f0 !important;
-        margin-bottom: 50px !important;
-        display: block !important;
-        padding-bottom: 50px !important;
-    }
 
 
     .acm-slideshow .style-3 .item {
         padding-top: 0 !important;
-    }
-
-    .acm-slideshow .style-3 .slide-desc {
-        color:  #0f0 !important;
-        background: none repeat scroll 0 0 !important;
-        margin-left: -26px;
-        margin-right: -26px;
-        padding: 40px;
-        text-align: left;
-        height: 350px !important;
     }
 
 
@@ -79,14 +59,25 @@ and (max-device-width : 480px) {
         margin-left: 0px;   
     }
 
-    .midias-sociais .section-title span {
-        font-size: 32px !important;
-    }
+
+
 
     .midias-sociais .section-title > span {
         font-size: 32px !important;
-        padding-bottom: 50px;
     }
+
+
+    .midias-sociais .section-title {
+        margin-bottom: 50px !important;
+        display: block !important;
+        padding-bottom: 20px !important;
+    }
+
+
+   /* .midias-sociais .section-title > span {
+        font-size: 32px !important;
+        padding-bottom: 50px;
+    }*/
 
     .midias-sociais .features-item.col-xs-6.col-sm-2.center:first-child {
         display: none;
@@ -143,8 +134,14 @@ and (max-device-width : 480px) {
         height: 550px;
     }
 
-    .midias-sociais .section-title > span {
-        font-size: 25px !important;
+    .calendario .heading {
+        color: #014b79 !important;
+        font-weight: 700 !important;
+        text-align: center !important;
+    }   
+
+    .calendario p {
+        text-align: center !important;
     }
 
     .uber-cliens .client-item {
@@ -154,8 +151,58 @@ and (max-device-width : 480px) {
         width: 50% !important;
     }
 
+    .uber-footer .t3-module .module-title span {
+        color: #172B53 !important;
+        text-align: center;
+    }
+
+    .button.subbutton.btn.btn-primary.btn-sm {
+        margin-top: 30px !important;
+    }
+
+
     .uber-social {
         text-align: center !important;
-        }
+    }
+
+
+    .carousel-indicators .active {
+    background-color: #01426a !important;
+    }
+
+    .carousel-indicators li {
+    border: 1px solid #01426a !important;
+    }
+
+
+
+
+
+
+    .acm-container-slide .carousel-indicators {
+         margin-bottom: -50px !important;
+    }
+
+    .camaras-setoriais .icones {
+        min-height: 240px;
+    }
+
+    .camaras-setoriais .row {
+    /*margin-top: 30px !important;*/
+    }
+
+    .camaras-setoriais p {
+    text-align: center !important;
+    }
+
+    .publicacoes {
+    padding-top: 50px !important;
+    }
+
+    .uber-footer-inner small {
+    font-size: 15px;
+    margin-bottom: 5px;
+    text-align: center;
+    }
 
 }
