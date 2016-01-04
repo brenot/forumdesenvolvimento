@@ -10845,6 +10845,11 @@ fieldset[disabled] .books-view span.addtocart-button input.notify-button.active 
   color: #fff !important;
 }
 
+.poweredby .t3-logo,
+.poweredby .t3-logo-small {
+  display: none !important;
+}
+
 .oforum .t3-mainbody {
   padding-top: 10px;
 }
