@@ -18,11 +18,15 @@
     /* MASTHEAD */
 
     .masthead .jamasshead .jamasshead-description {
-        display: none !important;
+       /* display: none !important;*/
     }
 
     .masthead .jamasshead .jamasshead-title {
-    font-size: 36px !important;
+    font-size: 30px !important;
+    }
+
+    .masthead .masthead-bg {
+    background-image: none !important;
     }
 
     /* FIM - MASTHEAD */
