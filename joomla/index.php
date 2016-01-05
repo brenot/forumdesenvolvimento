@@ -43,3 +43,7 @@ $app = JFactory::getApplication('site');
 
 // Execute the application.
 $app->execute();
+
+// Erros.
+
+error_reporting(0);

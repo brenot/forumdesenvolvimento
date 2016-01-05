@@ -11,10 +11,15 @@
     margin-right: -26px;
     padding: 40px;
     text-align: left;
-
     }
 
+    .masthead .jamasshead .jamasshead-description {
+        display: none !important;
+    }
 
+    .masthead .jamasshead .jamasshead-title {
+    font-size: 36px !important;
+    }
 
 
 
