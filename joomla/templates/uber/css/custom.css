@@ -35,6 +35,17 @@
 
     /* FIM - MASTHEAD */
 
+
+    /* YoutubeGallery - BRENO  */
+
+    .rioemfocopag table td {
+        max-height: 250px !important;
+
+    }
+
+    /* FIM - YoutubeGallery - BRENO  */
+
+
     .acm-slideshow .style-3 .item {
         padding-top: 0 !important;
     }
