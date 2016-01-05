@@ -192,6 +192,8 @@ class JFilterInput
 	 */
 	public function clean($source, $type = 'string')
 	{
+		error_reporting(E_ERROR);
+		
 		// Handle the type constraint
 		switch (strtoupper($type))
 		{
