@@ -13,6 +13,10 @@
     text-align: left;
     }
 
+
+
+    /* MASTHEAD */
+
     .masthead .jamasshead .jamasshead-description {
         display: none !important;
     }
@@ -21,7 +25,7 @@
     font-size: 36px !important;
     }
 
-
+    /* FIM - MASTHEAD */
 
     .acm-slideshow .style-3 .item {
         padding-top: 0 !important;
