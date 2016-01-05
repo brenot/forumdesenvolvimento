@@ -18,7 +18,7 @@
     /* MASTHEAD */
 
     .masthead .jamasshead .jamasshead-description {
-       /* display: none !important;*/
+    line-height: 1.3 !important;
     }
 
     .masthead .jamasshead .jamasshead-title {
@@ -27,6 +27,10 @@
 
     .masthead .masthead-bg {
     background-image: none !important;
+    }
+
+    .pagination .counter {
+    display: none !important;
     }
 
     /* FIM - MASTHEAD */
