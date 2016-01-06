@@ -39,8 +39,12 @@
     /* YoutubeGallery - BRENO  */
 
     .rioemfocopag table td {
-        max-width: 250px !important;
+        
+    }
 
+    .rioemfocopag h3 {
+    font-size: 18px !important;
+    margin-top: 4px !important;
     }
 
     /* FIM - YoutubeGallery - BRENO  */
