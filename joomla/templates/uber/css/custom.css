@@ -1,3 +1,19 @@
+#k2Container a.modal {
+border: 0px !important;
+display: inline-block !important;
+margin: 0 10px 0 0 !important;
+position: relative !important;
+top: auto !important;
+left: 0px !important;
+width: auto !important;
+-webkit-border-radius: 0px !important;
+-moz-border-radius: 0px !important;
+border-radius: 0px !important;
+-webkit-box-shadow: 0 0 0 0 !important;
+-moz-box-shadow: 0 0 0 0 !important;
+box-shadow: 0 0 0 0 !important;
+}
+
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
