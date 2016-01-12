@@ -92,7 +92,7 @@
 
 				<div class="client-img">
 
-					<?php if($clientLink):?><a href="<?php echo $clientLink; ?>" title="<?php echo $clientName; ?>" ><?php endif; ?>
+					<?php if($clientLink):?><a href="<?php echo $clientLink; ?>" target="_blank" title="<?php echo $clientName; ?>" ><?php endif; ?>
 
 						<img class="img-responsive" alt="<?php echo $clientName; ?>" src="<?php echo $clientLogo; ?>">
 
