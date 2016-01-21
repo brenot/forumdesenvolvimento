@@ -10801,6 +10801,21 @@ fieldset[disabled] .books-view span.addtocart-button input.notify-button.active 
   font-weight: 700 !important;
 }
 
+.category-tags .readmore a:hover,
+.category-tags .readmore a:focus,
+.category-tags .readmore a:active {
+  background: #01426a !important;
+  border-color: #01426a;
+  color: #ffffff;
+}
+.category-tags .readmore a {
+  border: 2px solid #96a1a3;
+  color: #505656;
+  display: inline-block;
+  padding: 6.5px 13px;
+  background: #ffffff !important;
+}
+
 .bt-cs .bt-inner {
   text-align: center !important;
 }

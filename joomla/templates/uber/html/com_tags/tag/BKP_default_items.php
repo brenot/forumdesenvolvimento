@@ -91,12 +91,7 @@ $n = count($this->items);
 				</span>
 				<?php echo $item->event->afterDisplayContent; ?>
 			<?php endif; ?>
-				<p class="readmore"><a class="btn btn-default" href="<?php echo JRoute::_(TagsHelperRoute::getItemRoute($item->content_item_id, $item->core_alias, $item->core_catid, $item->core_language, $item->type_alias, $item->router)); ?>">Leia Mais</a></p>			
 				</div>
-
-
-
-
 				</li>
 		<?php endforeach; ?>
 	</ul>
