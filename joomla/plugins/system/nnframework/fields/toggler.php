@@ -1,19 +1,17 @@
 <?php
 /**
- * Element: Toggler
- * Adds slide in and out functionality to framework based on an framework value
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-require_once JPATH_PLUGINS . '/system/nnframework/helpers/functions.php';
+require_once dirname(__DIR__) . '/helpers/functions.php';
 
 /**
  * To use this, make a start xml param tag with the param and value set

@@ -1,19 +1,17 @@
 <?php
 /**
- * NoNumber Framework Helper File: Assignments: Content
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-require_once JPATH_PLUGINS . '/system/nnframework/helpers/assignment.php';
+require_once dirname(__DIR__) . '/assignment.php';
 
 class NNFrameworkAssignmentsContent extends NNFrameworkAssignment
 {
@@ -52,7 +50,7 @@ class NNFrameworkAssignmentsContent extends NNFrameworkAssignment
 
 		$is_content  = in_array($this->request->option, array('com_content', 'com_flexicontent'));
 		$is_category = in_array($this->request->view, array('category'));
-		$is_item     = in_array($this->request->view, array('', 'article', 'item'));
+		$is_item     = in_array($this->request->view, array('', 'article', 'item', 'form'));
 
 		if (
 			$this->request->option != 'com_contentsubmit'
@@ -77,57 +75,27 @@ class NNFrameworkAssignmentsContent extends NNFrameworkAssignment
 		}
 
 		$pass = false;
-		if ($this->params->inc_others && !($is_content && ($is_category || $is_item)))
+		if (
+			$this->params->inc_others
+			&& !($is_content && ($is_category || $is_item))
+			&& $this->article
+		)
 		{
-			if ($this->article)
+			if (!isset($this->article->id) && isset($this->article->slug))
 			{
-				if (!isset($this->article->id))
-				{
-					if (isset($this->article->slug))
-					{
-						$this->article->id = (int) $this->article->slug;
-					}
-				}
-				if (!isset($this->article->catid))
-				{
-					if (isset($this->article->catslug))
-					{
-						$this->article->catid = (int) $this->article->catslug;
-					}
-				}
-				$this->request->id   = $this->article->id;
-				$this->request->view = 'article';
+				$this->article->id = (int) $this->article->slug;
 			}
+
+			if (!isset($this->article->catid) && isset($this->article->catslug))
+			{
+				$this->article->catid = (int) $this->article->catslug;
+			}
+
+			$this->request->id   = $this->article->id;
+			$this->request->view = 'article';
 		}
 
-		if ($is_category)
-		{
-			$catid = $this->request->id;
-		}
-		else
-		{
-			if (!$this->article && $this->request->id)
-			{
-				$this->article = JTable::getInstance('content');
-				$this->article->load($this->request->id);
-			}
-			$catid = JFactory::getApplication()->input->getInt('catid', JFactory::getApplication()->getUserState('com_content.articles.filter.category_id'));
-
-			if ($this->article && $this->article->catid)
-			{
-				$catid = $this->article->catid;
-			}
-			else if ($this->request->view == 'featured')
-			{
-				$menuparams = $this->getMenuItemParams($this->request->Itemid);
-				if (isset($menuparams->featured_categories))
-				{
-					$catid = $menuparams->featured_categories;
-				}
-			}
-		}
-
-		$catids = (array) $catid;
+		$catids = $this->getCategoryIds($is_category);
 
 		foreach ($catids as $catid)
 		{
@@ -162,6 +130,37 @@ class NNFrameworkAssignmentsContent extends NNFrameworkAssignment
 		}
 
 		return $this->pass($pass);
+	}
+
+	private function getCategoryIds($is_category = false)
+	{
+		if ($is_category)
+		{
+			return (array) $this->request->id;
+		}
+
+		if (!$this->article && $this->request->id)
+		{
+			$this->article = JTable::getInstance('content');
+			$this->article->load($this->request->id);
+		}
+
+		if ($this->article && $this->article->catid)
+		{
+			return (array) $this->article->catid;
+		}
+
+		$catid      = JFactory::getApplication()->input->getInt('catid', JFactory::getApplication()->getUserState('com_content.articles.filter.category_id'));
+		$menuparams = $this->getMenuItemParams($this->request->Itemid);
+
+		if ($this->request->view == 'featured')
+		{
+			$menuparams = $this->getMenuItemParams($this->request->Itemid);
+
+			return isset($menuparams->featured_categories) ? (array) $menuparams->featured_categories : (array) $catid;
+		}
+
+		return isset($menuparams->catid) ? (array) $menuparams->catid : (array) $catid;
 	}
 
 	public function passArticles()

@@ -1,12 +1,10 @@
 /**
- * Stylesheet for Element: Color
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 /**
@@ -24,8 +22,7 @@
   z-index: 12;
 }
 .minicolors.minicolors-theme-default .minicolors-input {
-  margin: 0px;
-  margin-right: 3px;
+  margin: 0;
   border: solid 1px #CCC;
   font: 14px sans-serif;
   width: 65px;
@@ -216,7 +213,7 @@
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 14px;
   height: 19px;
-  margin: 0px;
+  margin: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);

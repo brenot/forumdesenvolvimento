@@ -1,13 +1,11 @@
 <?php
 /**
- * Main Plugin File
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -16,7 +14,7 @@ defined('_JEXEC') or die;
 if (JFactory::getApplication()->isAdmin())
 {
 	// load the NoNumber Framework language file
-	require_once JPATH_PLUGINS . '/system/nnframework/helpers/functions.php';
+	require_once __DIR__ . '/helpers/functions.php';
 	NNFrameworkFunctions::loadLanguage('plg_system_nnframework');
 }
 
@@ -42,7 +40,7 @@ class PlgSystemNNFramework extends JPlugin
 		}
 
 		// Include the Helper
-		require_once JPATH_PLUGINS . '/system/nnframework/helper.php';
+		require_once __DIR__ . '/helper.php';
 		$helper = new PlgSystemNNFrameworkHelper;
 
 		$helper->render();
@@ -73,16 +71,16 @@ class PlgSystemNNFramework extends JPlugin
 		$db    = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->update('#__update_sites')
-			->set($db->qn('extra_query') . ' = ' . $db->q(''))
-			->where($db->qn('location') . ' LIKE ' . $db->q('http://download.nonumber.nl%'));
+			->set($db->quoteName('extra_query') . ' = ' . $db->quote(''))
+			->where($db->quoteName('location') . ' LIKE ' . $db->quote('http://download.nonumber.nl%'));
 		$db->setQuery($query);
 		$db->execute();
 
 		$query->clear()
 			->update('#__update_sites')
-			->set($db->qn('extra_query') . ' = ' . $db->q('k=' . $key))
-			->where($db->qn('location') . ' LIKE ' . $db->q('http://download.nonumber.nl%'))
-			->where($db->qn('location') . ' LIKE ' . $db->q('%&pro=1%'));
+			->set($db->quoteName('extra_query') . ' = ' . $db->quote('k=' . $key))
+			->where($db->quoteName('location') . ' LIKE ' . $db->quote('http://download.nonumber.nl%'))
+			->where($db->quoteName('location') . ' LIKE ' . $db->quote('%&pro=1%'));
 		$db->setQuery($query);
 		$db->execute();
 	}
@@ -102,7 +100,7 @@ class PlgSystemNNFramework extends JPlugin
 			return;
 		}
 
-		require_once JPATH_PLUGINS . '/system/nnframework/helpers/search.php';
+		require_once __DIR__ . '/helpers/search.php';
 	}
 }
 

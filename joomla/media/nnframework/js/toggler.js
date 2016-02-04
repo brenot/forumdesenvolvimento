@@ -1,20 +1,17 @@
 /**
- * JavaScript file for Element: Toggler
- * Adds slide in and out functionality to elements based on an elements value
- *
  * @package         NoNumber Framework
- * @version
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
+var nnToggler = null;
+
 (function($) {
-	if (typeof( window['nnToggler'] ) != "undefined") {
-		return;
-	}
+	"use strict";
 
 	$(document).ready(function() {
 		if ($('.nntoggler').length) {
@@ -58,10 +55,10 @@
 					toggler.method = ( $(toggler).hasClass('nntoggler_and') ) ? 'and' : 'or';
 					toggler.ids = toggler.id.split('___');
 					for (var i = 1; i < toggler.ids.length; i++) {
-						keyval = toggler.ids[i].split('.');
+						var keyval = toggler.ids[i].split('.');
 
-						key = keyval[0];
-						val = 1;
+						var key = keyval[0];
+						var val = 1;
 						if (keyval.length > 1) {
 							val = keyval[1];
 						}
@@ -146,7 +143,7 @@
 
 		isShow: function(toggler) {
 			var show = ( toggler.method == 'and' );
-			for (el_name in toggler.elements) {
+			for (var el_name in toggler.elements) {
 				var vals = toggler.elements[el_name];
 				var values = this.elements[el_name].values;
 				if (
@@ -204,7 +201,7 @@
 		setElements: function() {
 			var self = this;
 			$.each($('input, select'), function(i, el) {
-				el_name = el.name
+				var el_name = el.name
 					.replace('@', '_')
 					.replace('[]', '')
 					.replace(/^(?:jform\[params\]|jform|params|advancedparams)\[(.*?)\]/g, '\$1')

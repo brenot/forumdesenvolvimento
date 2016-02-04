@@ -1,13 +1,11 @@
 <?php
 /**
- * NoNumber Framework Helper File: Assignments
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -342,7 +340,7 @@ class NNFrameworkAssignmentsHelper
 					if (method_exists('NNFrameworkAssignments' . $main_type, $method))
 					{
 						$this->classes[$main_type]->initAssignment($assignment, $article);
-						$pass = $this->classes[$main_type]->$method();
+						$pass = $this->classes[$main_type]->{$method}();
 					}
 				}
 

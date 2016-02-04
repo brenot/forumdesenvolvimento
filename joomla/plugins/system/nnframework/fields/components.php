@@ -1,20 +1,17 @@
 <?php
 /**
- * Element: Components
- * Displays a list of components with check boxes
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-require_once JPATH_PLUGINS . '/system/nnframework/helpers/field.php';
+require_once dirname(__DIR__) . '/helpers/field.php';
 
 class JFormFieldNN_Components extends NNFormField
 {
@@ -33,7 +30,7 @@ class JFormFieldNN_Components extends NNFormField
 
 		$size = (int) $this->get('size');
 
-		require_once JPATH_PLUGINS . '/system/nnframework/helpers/html.php';
+		require_once dirname(__DIR__) . '/helpers/html.php';
 
 		return NNHtml::selectlistsimple($options, $this->name, $this->value, $this->id, $size, 1);
 	}
@@ -67,22 +64,26 @@ class JFormFieldNN_Components extends NNFormField
 
 		foreach ($components as $i => $component)
 		{
-			// return if there is no main component folder
-			if (!($frontend && JFolder::exists(JPATH_SITE . '/components/' . $component->element))
-				&& !($admin && JFolder::exists(JPATH_ADMINISTRATOR . '/components/' . $component->element))
-			)
+			if (empty($component->element))
 			{
 				continue;
 			}
 
-			// return if there is no views folder
-			if (!($frontend && JFolder::exists(JPATH_SITE . '/components/' . $component->element . '/views'))
-				&& !($admin && JFolder::exists(JPATH_ADMINISTRATOR . '/components/' . $component->element . '/views'))
-			)
+			$component_folder = ($frontend ? JPATH_SITE : JPATH_ADMINISTRATOR) . '/components/' . $component->element;
+
+			// return if there is no main component folder
+			if (!JFolder::exists($component_folder))
 			{
 				continue;
 			}
-			if (!empty($component->element))
+
+			// return if there is no view(s) folder
+			if (!JFolder::exists($component_folder . '/views') && !JFolder::exists($component_folder . '/view'))
+			{
+				continue;
+			}
+
+			if (strpos($component->name, ' ') === false)
 			{
 				// Load the core file then
 				// Load extension-local file.
@@ -90,10 +91,13 @@ class JFormFieldNN_Components extends NNFormField
 				|| $lang->load($component->element . '.sys', JPATH_ADMINISTRATOR . '/components/' . $component->element, null, false, false)
 				|| $lang->load($component->element . '.sys', JPATH_BASE, $lang->getDefault(), false, false)
 				|| $lang->load($component->element . '.sys', JPATH_ADMINISTRATOR . '/components/' . $component->element, $lang->getDefault(), false, false);
+
+				$component->name = JText::_(strtoupper($component->name));
 			}
-			$component->name                                                                        = JText::_(strtoupper($component->name));
+
 			$comps[preg_replace('#[^a-z0-9_]#i', '', $component->name . '_' . $component->element)] = $component;
 		}
+
 		ksort($comps);
 
 		$options = array();

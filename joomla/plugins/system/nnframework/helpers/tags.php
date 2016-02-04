@@ -1,13 +1,11 @@
 <?php
 /**
- * NoNumber Framework Helper File: Tags
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -28,7 +26,9 @@ class NNTags
 		$string = str_replace(array('\\' . $temp_separator, '\\' . $temp_equal), array($separator, $equal), $string);
 
 		// protect all html tags
-		if (preg_match_all('#</?[a-z][^>]*>#si', $string, $tags, PREG_SET_ORDER))
+		preg_match_all('#</?[a-z][^>]*>#si', $string, $tags, PREG_SET_ORDER);
+
+		if (!empty($tags))
 		{
 			foreach ($tags as $tag)
 			{
@@ -62,12 +62,15 @@ class NNTags
 			// unprotect tags in key and val
 			foreach ($keyval as $key => $val)
 			{
-				if (preg_match_all('#' . preg_quote($tag_start, '#') . '(.*?)' . preg_quote($tag_end, '#') . '#si', $val, $tags, PREG_SET_ORDER))
+				preg_match_all('#' . preg_quote($tag_start, '#') . '(.*?)' . preg_quote($tag_end, '#') . '#si', $val, $tags, PREG_SET_ORDER);
+
+				if (!empty($tags))
 				{
 					foreach ($tags as $tag)
 					{
 						$val = str_replace($tag['0'], base64_decode($tag['1']), $val);
 					}
+
 					$keyval[trim($key)] = $val;
 				}
 			}
@@ -129,27 +132,26 @@ class NNTags
 		$tags = NNText::toArray($tags);
 		$tags = count($tags) > 1 ? '(?:' . implode('|', $tags) . ')' : $tags['0'];
 
-		$spaces = self::getRegexSpaces();
-
-		$attribs = $spaces . '[^>"]*(?:"[^"]*"[^>"]*)+';
+		$value   = '(?:\s*=\s*(?:"[^"]*"|\'[^\']*\'|[a-z0-9-_]+))?';
+		$attribs = '(?:\s+[a-z0-9-_]+' . $value . ')+';
 
 		$required_attributes = NNText::toArray($required_attributes);
 		if (!empty($required_attributes))
 		{
-			$attribs = $spaces . '[^>"]*(?:"[^"]*"[^>"]*)*(?:' . implode('|', $required_attributes) . ')\s*=\s*(?:"[^"]*"[^>"]*)+';
+			$attribs = $attribs . '(?:\s+' . implode('|', $required_attributes) . ')' . $value . $attribs;
 		}
 
 		if ($include_no_attributes)
 		{
-			$attribs = '(?:' . $attribs . ')?';
+			$attribs = '\s*(?:' . $attribs . ')?';
 		}
 
 		if (!$include_ending)
 		{
-			return '<' . $tags . $attribs . '>';
+			return '<' . $tags . $attribs . '\s*>';
 		}
 
-		return '<(?:\/' . $tags . '|' . $tags . $attribs . ')(?:\/|' . $spaces . ')*>';
+		return '<(?:\/' . $tags . '|' . $tags . $attribs . '\s*/?)\s*>';
 	}
 
 	public static function cleanSurroundingTags($tags, $elements = array('p', 'span'))
@@ -220,6 +222,32 @@ class NNTags
 			. '#',
 			'\1', $string);
 
+		// Remove inner <p> tags if outer start/end <p> tags are found
+		$string = preg_replace('#'
+			. '(<(?:' . implode('|', self::getBlockElementsNoDiv()) . ')(?: [^>]*)?>' . $breaks . ')'
+			. '<p(?: [^>]*)?>(.*)</p>'
+			. '(' . $breaks . ')'
+			. '#',
+			'\1\2\3', $string);
+		$string = preg_replace('#'
+			. '(' . $breaks . ')'
+			. '<p(?: [^>]*)?>(.*)</p>'
+			. '(' . $breaks . '</(?:' . implode('|', self::getBlockElementsNoDiv()) . ')>)'
+			. '#',
+			'\1\2\3', $string);
+
+		// Remove outer <p> tags around block elements
+		$string = preg_replace('#'
+			. '^\s*<p(?: [^>]*)?>'
+			. '(' . $breaks . '</?(?:' . implode('|', self::getBlockElements()) . ')(?: [^>]*)?>)'
+			. '#',
+			'\1', $string);
+		$string = preg_replace('#'
+			. '(</?(?:' . implode('|', self::getBlockElements()) . ')>' . $breaks . ')'
+			. '</p>\s*$'
+			. '#',
+			'\1', $string);
+
 		$tags = explode(':|:', $string);
 
 		$new_tags = array();
@@ -237,6 +265,14 @@ class NNTags
 	{
 		return array(
 			'div', 'p', 'pre',
+			'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+		);
+	}
+
+	private static function getBlockElementsNoDiv()
+	{
+		return array(
+			'p', 'pre',
 			'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
 		);
 	}
@@ -367,7 +403,7 @@ class NNTags
 			}
 
 			list($key, $val) = explode(':', $e, 2);
-			$extras->$key = $val;
+			$extras->{$key} = $val;
 		}
 
 		$attribs = '';

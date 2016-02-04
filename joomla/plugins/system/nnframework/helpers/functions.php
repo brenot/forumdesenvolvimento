@@ -1,13 +1,11 @@
 <?php
 /**
- * NoNumber Framework Helper File: Functions
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -431,7 +429,7 @@ class NNFrameworkFunctions
 
 		if ($root)
 		{
-			if (!isset($xml->$root))
+			if (!isset($xml->{$root}))
 			{
 				return NNCache::set(
 					$hash,
@@ -439,7 +437,7 @@ class NNFrameworkFunctions
 				);
 			}
 
-			$xml = $xml->$root;
+			$xml = $xml->{$root};
 		}
 
 		$json = json_encode($xml);
@@ -449,9 +447,9 @@ class NNFrameworkFunctions
 			$xml = new stdClass;
 		}
 
-		if ($root && isset($xml->$root))
+		if ($root && isset($xml->{$root}))
 		{
-			$xml = $xml->$root;
+			$xml = $xml->{$root};
 		}
 
 		return NNCache::set(

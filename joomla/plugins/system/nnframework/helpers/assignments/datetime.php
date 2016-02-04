@@ -1,19 +1,17 @@
 <?php
 /**
- * NoNumber Framework Helper File: Assignments: DateTime
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-require_once JPATH_PLUGINS . '/system/nnframework/helpers/assignment.php';
+require_once dirname(__DIR__) . '/assignment.php';
 
 class NNFrameworkAssignmentsDateTime extends NNFrameworkAssignment
 {
@@ -28,7 +26,7 @@ class NNFrameworkAssignmentsDateTime extends NNFrameworkAssignment
 			return ($this->assignment == 'include');
 		}
 
-		require_once JPATH_PLUGINS . '/system/nnframework/helpers/text.php';
+		require_once dirname(__DIR__) . '/text.php';
 
 		NNText::fixDate($this->params->publish_up);
 		NNText::fixDate($this->params->publish_down);

@@ -1,19 +1,17 @@
 <?php
 /**
- * Element: VirtueMart
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-require_once JPATH_PLUGINS . '/system/nnframework/helpers/groupfield.php';
+require_once dirname(__DIR__) . '/helpers/groupfield.php';
 
 class JFormFieldNN_VirtueMart extends NNFormGroupField
 {
@@ -33,7 +31,7 @@ class JFormFieldNN_VirtueMart extends NNFormGroupField
 	function getCategories()
 	{
 		$query = $this->db->getQuery(true)
-			->select('COUNT(*)')
+			->select('COUNT(c.virtuemart_category_id)')
 			->from('#__virtuemart_categories AS c')
 			->where('c.published > -1');
 		$this->db->setQuery($query);
@@ -61,7 +59,7 @@ class JFormFieldNN_VirtueMart extends NNFormGroupField
 	function getProducts()
 	{
 		$query = $this->db->getQuery(true)
-			->select('COUNT(*)')
+			->select('COUNT(p.virtuemart_product_id)')
 			->from('#__virtuemart_products AS p')
 			->where('p.published > -1');
 		$this->db->setQuery($query);

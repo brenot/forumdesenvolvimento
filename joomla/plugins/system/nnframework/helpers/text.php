@@ -1,17 +1,17 @@
 <?php
 /**
- * NoNumber Framework Helper File: Text
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
+
+require_once __DIR__ . '/string.php';
 
 class NNText
 {
@@ -351,7 +351,9 @@ class NNText
 
 		$p_start_tag   = '<p(?: [^>]*)?>';
 		$optional_tags = '\s*(?:<\!-- [^>]*-->|&nbsp;|&\#160;)*\s*';
-		if (!preg_match_all('#(' . $p_start_tag . ')(' . $optional_tags . ')(' . $p_start_tag . ')#si', $string, $tags, PREG_SET_ORDER))
+		preg_match_all('#(' . $p_start_tag . ')(' . $optional_tags . ')(' . $p_start_tag . ')#si', $string, $tags, PREG_SET_ORDER);
+
+		if (empty($tags))
 		{
 			return;
 		}
@@ -474,7 +476,9 @@ class NNText
 			return array();
 		}
 
-		if (!preg_match_all('#([a-z0-9-_]+)="([^"]*)"#si', $string, $matches, PREG_SET_ORDER))
+		preg_match_all('#([a-z0-9-_]+)="([^"]*)"#si', $string, $matches, PREG_SET_ORDER);
+
+		if (empty($matches))
 		{
 			return array();
 		}
@@ -560,7 +564,7 @@ class NNText
 		$string = html_entity_decode($string, ENT_COMPAT, 'UTF-8');
 
 		// Convert to lowercase
-		$string = JString::strtolower($string);
+		$string = NNString::strtolower($string);
 
 		// remove html tags
 		$string = preg_replace('#</?[a-z][^>]*>#usi', '', $string);
@@ -613,7 +617,7 @@ class NNText
 		foreach ($titles as $title)
 		{
 			$matches[] = $title;
-			$matches[] = JString::strtolower($title);
+			$matches[] = NNString::strtolower($title);
 		}
 
 		$matches = array_unique($matches);

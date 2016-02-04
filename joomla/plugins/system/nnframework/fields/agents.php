@@ -1,19 +1,17 @@
 <?php
 /**
- * Element: Agents
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-require_once JPATH_PLUGINS . '/system/nnframework/helpers/field.php';
+require_once dirname(__DIR__) . '/helpers/field.php';
 
 class JFormFieldNN_Agents extends NNFormField
 {
@@ -78,6 +76,7 @@ class JFormFieldNN_Agents extends NNFormField
 				$agents[] = array('Chrome 11-20', '#Chrome/(1[1-9]|20)\.#');
 				$agents[] = array('Chrome 1-10', '#Chrome/([1-9]|10)\.#');
 				$agents[] = array('Firefox (' . JText::_('JALL') . ')', 'Firefox');
+				$agents[] = array('Firefox 41-50', '#Firefox/(4[1-9]|50)\.#');
 				$agents[] = array('Firefox 31-40', '#Firefox/(3[1-9]|40)\.#');
 				$agents[] = array('Firefox 21-30', '#Firefox/(2[1-9]|30)\.#');
 				$agents[] = array('Firefox 11-20', '#Firefox/(1[1-9]|20)\.#');
@@ -85,6 +84,7 @@ class JFormFieldNN_Agents extends NNFormField
 				$agents[] = array('Edge (' . JText::_('JALL') . ')', 'Edge');
 				$agents[] = array('Edge 12', 'Edge/12');
 				$agents[] = array('Internet Explorer (' . JText::_('JALL') . ')', 'MSIE');
+				$agents[] = array('Internet Explorer Edge', 'MSIE Edge'); // missing MSIE is added to agent string in assingnments/agents.php
 				$agents[] = array('Internet Explorer 11', 'MSIE 11'); // missing MSIE is added to agent string in assingnments/agents.php
 				$agents[] = array('Internet Explorer 10.6', 'MSIE 10.6');
 				$agents[] = array('Internet Explorer 10.0', 'MSIE 10.0');
@@ -100,7 +100,7 @@ class JFormFieldNN_Agents extends NNFormField
 				$agents[] = array('Opera 1-10', '#Opera/([1-9]|10)\.#');
 				$agents[] = array('Safari (' . JText::_('JALL') . ')', 'Safari');
 				//$agents[] = array('Safari 10', '#Version/10\..*Safari/#');
-				//$agents[] = array('Safari 9', '#Version/9\..*Safari/#');
+				$agents[] = array('Safari 9', '#Version/9\..*Safari/#');
 				$agents[] = array('Safari 8', '#Version/8\..*Safari/#');
 				$agents[] = array('Safari 7', '#Version/7\..*Safari/#');
 				$agents[] = array('Safari 6', '#Version/6\..*Safari/#');
@@ -136,7 +136,7 @@ class JFormFieldNN_Agents extends NNFormField
 
 		$size = (int) $this->get('size');
 
-		require_once JPATH_PLUGINS . '/system/nnframework/helpers/html.php';
+		require_once dirname(__DIR__) . '/helpers/html.php';
 
 		return NNHtml::selectlistsimple($options, $this->name, $this->value, $this->id, $size, 1);
 	}

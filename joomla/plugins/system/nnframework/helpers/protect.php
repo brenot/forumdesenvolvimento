@@ -1,13 +1,11 @@
 <?php
 /**
- * NoNumber Framework Helper File: Protect
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -72,10 +70,16 @@ class NNProtect
 	 */
 	public static function isAdmin($block_login = 0)
 	{
+		$app = JFactory::getApplication();
+
 		return (
-			JFactory::getApplication()->isAdmin()
-			&& (!$block_login || JFactory::getApplication()->input->get('option') != 'com_login')
-			&& JFactory::getApplication()->input->get('task') != 'preview'
+			$app->isAdmin()
+			&& (!$block_login || $app->input->get('option') != 'com_login')
+			&& $app->input->get('task') != 'preview'
+			&& !(
+				$app->input->get('option') == 'com_finder'
+				&& $app->input->get('format') == 'json'
+			)
 		);
 	}
 
@@ -91,7 +95,9 @@ class NNProtect
 			return NNCache::get($hash);
 		}
 
-		$option = JFactory::getApplication()->input->get('option');
+		$app = JFactory::getApplication();
+
+		$option = $app->input->get('option');
 		// always return false for these components
 		if (in_array($option, array('com_rsevents', 'com_rseventspro')))
 		{
@@ -101,14 +107,14 @@ class NNProtect
 			);
 		}
 
-		$task = JFactory::getApplication()->input->get('task');
+		$task = $app->input->get('task');
 		if (strpos($task, '.') !== false)
 		{
 			$task = explode('.', $task);
 			$task = array_pop($task);
 		}
 
-		$view = JFactory::getApplication()->input->get('view');
+		$view = $app->input->get('view');
 		if (strpos($view, '.') !== false)
 		{
 			$view = explode('.', $view);
@@ -118,10 +124,10 @@ class NNProtect
 		$isedit = (
 			in_array($task, array('edit', 'form', 'submission'))
 			|| in_array($view, array('edit', 'form'))
-			|| in_array(JFactory::getApplication()->input->get('do'), array('edit', 'form'))
-			|| in_array(JFactory::getApplication()->input->get('layout'), array('edit', 'form', 'write'))
-			|| in_array(JFactory::getApplication()->input->get('option'), array('com_contentsubmit', 'com_cckjseblod'))
-			|| (JFactory::getApplication()->input->get('option') == 'com_comprofiler' && in_array($task, array('', 'userdetails')))
+			|| in_array($app->input->get('do'), array('edit', 'form'))
+			|| in_array($app->input->get('layout'), array('edit', 'form', 'write'))
+			|| in_array($app->input->get('option'), array('com_contentsubmit', 'com_cckjseblod'))
+			|| ($app->input->get('option') == 'com_comprofiler' && in_array($task, array('', 'userdetails')))
 			|| NNProtect::isAdmin()
 		);
 
@@ -180,11 +186,16 @@ class NNProtect
 			return;
 		}
 
+		$param_name  = '[a-z][a-z0-9-_]*';
+		$params      = '(?:\s+' . $param_name . '(?:\s*=\s*(?:"[^"]*"|\'[^\']*\'|[0-9]+))?)*';
+		$type_values = '(?:text|email|hidden)';
+		$param_type  = '\s+type\s*=\s*(?:"' . $type_values . '"|\'' . $type_values . '\'])';
+
 		self::protectByRegex(
 			$string,
 			'#(?:(?:'
-			. '(?:<' . 'input\s[^>]*type\s*=\s*(?:\'|")(?:text|email|hidden)(?:\'|")[^>]*>)'
-			. '|(?:<' . 'textarea(\s[^>]*)?>.*?</textarea>)'
+			. '(?:<' . 'input' . $params . $param_type . $params . '\s*/?>)'
+			. '|(?:<' . 'textarea[\s>].*?</textarea>)'
 			. ')\s*)+#si'
 		);
 	}
@@ -218,12 +229,15 @@ class NNProtect
 	 */
 	private static function protectByRegex(&$string, $regex)
 	{
-		if (!preg_match_all($regex, $string, $matches))
+		preg_match_all($regex, $string, $matches);
+
+		if (empty($matches))
 		{
 			return;
 		}
 
-		$matches = array_unique($matches['0']);
+		$matches      = array_unique($matches['0']);
+		$replacements = array();
 
 		foreach ($matches as $match)
 		{
@@ -304,7 +318,9 @@ class NNProtect
 
 		$regex = '#' . preg_quote('{' . self::$sourcerer_tag, '#') . '[\s\}].*?' . preg_quote('{/' . self::$sourcerer_tag . '}', '#') . '#si';
 
-		if (!preg_match_all($regex, $string, $matches))
+		preg_match_all($regex, $string, $matches);
+
+		if (empty($matches))
 		{
 			return;
 		}
@@ -369,7 +385,9 @@ class NNProtect
 
 		$form_parts = explode('</form>', $string, 2);
 		// protect tags only inside form fields
-		if (!preg_match_all('#(?:<textarea[^>]*>.*?<\/textarea>|<input[^>]*>)#si', $form_parts['0'], $matches))
+		preg_match_all('#(?:<textarea[^>]*>.*?<\/textarea>|<input[^>]*>)#si', $form_parts['0'], $matches);
+
+		if (empty($matches))
 		{
 			return;
 		}
@@ -534,7 +552,9 @@ class NNProtect
 			$html_tags = array($html_tags);
 		}
 
-		if (!preg_match_all('#(<(' . implode('|', $html_tags) . ')(?:\s[^>]*?)>)(.*?)(</\2>)#si', $string, $matches, PREG_SET_ORDER))
+		preg_match_all('#(<(' . implode('|', $html_tags) . ')(?:\s[^>]*?)>)(.*?)(</\2>)#si', $string, $matches, PREG_SET_ORDER);
+
+		if (empty($matches))
 		{
 			return;
 		}
@@ -562,7 +582,9 @@ class NNProtect
 			$attributes = array($attributes);
 		}
 
-		if (!preg_match_all('#\s(?:' . implode('|', $attributes) . ')\s*=\s*".*?"#si', $string, $matches))
+		preg_match_all('#\s(?:' . implode('|', $attributes) . ')\s*=\s*".*?"#si', $string, $matches);
+
+		if (empty($matches))
 		{
 			return;
 		}
