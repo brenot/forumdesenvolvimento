@@ -1,16 +1,16 @@
 /**
- * MultiSelect JavaScript file
- *
  * @package         NoNumber Framework
- * @version
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 (function($) {
+	"use strict";
+
 	$(document).ready(function() {
 		$('.nn_multiselect').each(function() {
 			var controls = $(this).find('div.nn_multiselect-controls');
@@ -19,8 +19,8 @@
 			var maxheight = list.css('max-height');
 
 			list.find('li').each(function() {
-				$li = $(this);
-				$div = $li.find('div.nn_multiselect-item:first');
+				var $li = $(this);
+				var $div = $li.find('div.nn_multiselect-item:first');
 
 				// Add icons
 				$li.prepend('<span class="pull-left icon-"></span>');
@@ -43,7 +43,7 @@
 
 			// Takes care of the Expand/Collapse of a node
 			list.find('span.nn_multiselect-toggle').click(function() {
-				$icon = $(this);
+				var $icon = $(this);
 
 				// Take care of parent UL
 				if ($icon.parent().find('ul.nn_multiselect-sub').is(':visible')) {
@@ -59,9 +59,9 @@
 
 			// Takes care of the filtering
 			controls.find('input.nn_multiselect-filter').keyup(function() {
-				$text = $(this).val().toLowerCase();
+				var $text = $(this).val().toLowerCase();
 				list.find('li').each(function() {
-					$li = $(this);
+					var $li = $(this);
 					if ($li.text().toLowerCase().indexOf($text) == -1) {
 						$li.hide();
 					} else {
@@ -83,7 +83,7 @@
 			// Toggles all checkboxes in the list
 			controls.find('a.nn_multiselect-toggleall').click(function() {
 				list.find('input').each(function() {
-					$input = $(this);
+					var $input = $(this);
 					if ($input.prop('checked')) {
 						$input.prop('checked', false);
 					} else {
@@ -112,20 +112,21 @@
 			// Shows all selected items in the list
 			controls.find('a.nn_multiselect-showselected').click(function() {
 				list.find('li').each(function() {
-					$li = $(this);
-					$hide = 1;
+					var $li = $(this);
+					var $hide = true;
 					$li.find('input').each(function() {
-						$input = $(this);
-						if ($input.prop('checked')) {
-							$hide = 0;
-							return;
+						if ($(this).prop('checked')) {
+							$hide = false;
+							return false;
 						}
 					});
+
 					if ($hide) {
 						$li.hide();
-					} else {
-						$li.show();
+						return;
 					}
+
+					$li.show();
 				});
 			});
 
@@ -155,23 +156,21 @@
 
 		// Take care of children toggle all
 		$('div.nn_multiselect a.expandall').click(function() {
-			$parent = $(this).parent().parent().parent().parent().parent().parent().parent();
+			var $parent = $(this).parent().parent().parent().parent().parent().parent().parent();
 			$parent.find('ul.nn_multiselect-sub').show();
 			$parent.find('ul.nn_multiselect-sub span.nn_multiselect-toggle').removeClass('icon-plus').addClass('icon-minus');
-			;
 		});
 		$('div.nn_multiselect a.collapseall').click(function() {
-			$parent = $(this).parent().parent().parent().parent().parent().parent().parent();
+			var $parent = $(this).parent().parent().parent().parent().parent().parent().parent();
 			$parent.find('li ul.nn_multiselect-sub').hide();
 			$parent.find('li span.nn_multiselect-toggle').removeClass('icon-minus').addClass('icon-plus');
-			;
 		});
 		$('div.nn_multiselect-item.hidechildren').click(function() {
-			$parent = $(this).parent();
+			var $parent = $(this).parent();
 
 			$(this).find('input').each(function() {
-				$sub = $parent.find('ul.nn_multiselect-sub').first();
-				$input = $(this);
+				var $sub = $parent.find('ul.nn_multiselect-sub').first();
+				var $input = $(this);
 				if ($input.prop('checked')) {
 					$parent.find('span.nn_multiselect-toggle, div.nn_multiselect-menu').css('visibility', 'hidden');
 					if (!$sub.parent().hasClass('hidelist')) {
@@ -184,8 +183,6 @@
 					}
 				}
 			});
-			;
 		});
-
 	});
 })(jQuery);

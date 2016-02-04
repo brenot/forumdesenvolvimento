@@ -1,19 +1,17 @@
 <?php
 /**
- * Element: Content
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-require_once JPATH_PLUGINS . '/system/nnframework/helpers/groupfield.php';
+require_once dirname(__DIR__) . '/helpers/groupfield.php';
 
 class JFormFieldNN_Content extends NNFormGroupField
 {
@@ -22,7 +20,7 @@ class JFormFieldNN_Content extends NNFormGroupField
 	function getCategories()
 	{
 		$query = $this->db->getQuery(true)
-			->select('COUNT(*)')
+			->select('COUNT(c.id)')
 			->from('#__categories AS c')
 			->where('c.extension = ' . $this->db->quote('com_content'))
 			->where('c.parent_id > 0')
@@ -62,7 +60,7 @@ class JFormFieldNN_Content extends NNFormGroupField
 	function getItems()
 	{
 		$query = $this->db->getQuery(true)
-			->select('COUNT(*)')
+			->select('COUNT(i.id)')
 			->from('#__content AS i')
 			->where('i.access > -1');
 		$this->db->setQuery($query);

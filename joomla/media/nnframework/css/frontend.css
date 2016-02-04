@@ -1,12 +1,10 @@
 /**
- * Frontend stylesheet
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 .row {
@@ -3465,14 +3463,12 @@ th .tooltip-inner {
   content: "\e008";
 }
 /**
- * Stylesheet for Element: MultiSelect
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 div.nn_multiselect {
@@ -3485,7 +3481,6 @@ div.nn_multiselect ul.nn_multiselect-ul {
 }
 div.nn_multiselect ul.nn_multiselect-ul li {
   margin: 0;
-  padding: 0;
   padding: 2px 10px 2px;
   list-style: none;
 }

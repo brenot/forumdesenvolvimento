@@ -1,23 +1,10 @@
 /**
- * Main stylesheet
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
- * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
- */
-/**
- * Stylesheet for font faces
- *
- * @package         NoNumber Framework
- * @version         15.12.7724
- *
- * @author          Peter van Westen <peter@nonumber.nl>
- * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 @font-face {
@@ -351,15 +338,6 @@ div.nn_well h4 {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.nn_resize_textarea {
-  cursor: pointer;
-}
-.nn_resize_textarea.nn_maximize .nn_resize_textarea_minimize {
-  display: none;
-}
-.nn_resize_textarea.nn_minimize .nn_resize_textarea_maximize {
-  display: none;
-}
 .header .icon-nonumber:before {
   font-size: 20px !important;
 }
@@ -443,30 +421,6 @@ div.nn_well h4 {
   background: transparent url(../images/icon-color.png) no-repeat;
   width: 16px !important;
   height: 16px !important;
-}
-body:not(.tpl_nonumber) .j-main-container .chzn-container-single .chzn-single {
-  padding: 2px 12px;
-}
-body:not(.tpl_nonumber) .chzn-container-single .chzn-single div {
-  width: 20px;
-}
-body:not(.tpl_nonumber) .chzn-container-single .chzn-single div b {
-  background: none;
-  display: inline-block;
-  width: 0;
-  height: 0;
-  vertical-align: top;
-  border-top: 4px solid #000000;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-  content: "";
-  margin-top: 12px;
-}
-body:not(.tpl_nonumber) .chzn-container-active.chzn-with-drop .chzn-single div b {
-  border-top: none;
-  border-bottom: 4px solid #000000;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
 }
 .chzn-small {
   width: 120px;
@@ -618,4 +572,110 @@ input.nn_keyfield {
   font-size: 0.7em;
   opacity: 0.6;
   filter: alpha(opacity=60);
+}
+.nn_simplecategory_new {
+  margin-top: 4px;
+}
+/* better responsiveness */
+@media (min-width: 768px) and (max-width: 1200px) {
+  .row-fluid [class*="span"].span-md-12 {
+    width: 100%;
+    *width: 99.94680851063829%;
+    margin-left: 0;
+  }
+  .row-fluid [class*="span"].span-md-11 {
+    width: 91.48936170212765%;
+    *width: 91.43617021276594%;
+  }
+  .row-fluid [class*="span"].span-md-10 {
+    width: 82.97872340425532%;
+    *width: 82.92553191489361%;
+  }
+  .row-fluid [class*="span"].span-md-9 {
+    width: 74.46808510638297%;
+    *width: 74.41489361702126%;
+  }
+  .row-fluid [class*="span"].span-md-8 {
+    width: 65.95744680851064%;
+    *width: 65.90425531914893%;
+  }
+  .row-fluid [class*="span"].span-md-7 {
+    width: 57.44680851063829%;
+    *width: 57.39361702127659%;
+  }
+  .row-fluid [class*="span"].span-md-6 {
+    width: 48.93617021276595%;
+    *width: 48.88297872340425%;
+  }
+  .row-fluid [class*="span"].span-md-5 {
+    width: 40.42553191489362%;
+    *width: 40.37234042553192%;
+  }
+  .row-fluid [class*="span"].span-md-4 {
+    width: 31.914893617021278%;
+    *width: 31.861702127659576%;
+  }
+  .row-fluid [class*="span"].span-md-3 {
+    width: 23.404255319148934%;
+    *width: 23.351063829787233%;
+  }
+  .row-fluid [class*="span"].span-md-2 {
+    width: 14.893617021276595%;
+    *width: 14.840425531914894%;
+  }
+  .row-fluid [class*="span"].span-md-1 {
+    width: 6.382978723404255%;
+    *width: 6.329787234042553%;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .row-fluid [class*="span"].span-lg-12 {
+    width: 100%;
+    *width: 99.94680851063829%;
+    margin-left: 0;
+  }
+  .row-fluid [class*="span"].span-lg-11 {
+    width: 91.48936170212765%;
+    *width: 91.43617021276594%;
+  }
+  .row-fluid [class*="span"].span-lg-10 {
+    width: 82.97872340425532%;
+    *width: 82.92553191489361%;
+  }
+  .row-fluid [class*="span"].span-lg-9 {
+    width: 74.46808510638297%;
+    *width: 74.41489361702126%;
+  }
+  .row-fluid [class*="span"].span-lg-8 {
+    width: 65.95744680851064%;
+    *width: 65.90425531914893%;
+  }
+  .row-fluid [class*="span"].span-lg-7 {
+    width: 57.44680851063829%;
+    *width: 57.39361702127659%;
+  }
+  .row-fluid [class*="span"].span-lg-6 {
+    width: 48.93617021276595%;
+    *width: 48.88297872340425%;
+  }
+  .row-fluid [class*="span"].span-lg-5 {
+    width: 40.42553191489362%;
+    *width: 40.37234042553192%;
+  }
+  .row-fluid [class*="span"].span-lg-4 {
+    width: 31.914893617021278%;
+    *width: 31.861702127659576%;
+  }
+  .row-fluid [class*="span"].span-lg-3 {
+    width: 23.404255319148934%;
+    *width: 23.351063829787233%;
+  }
+  .row-fluid [class*="span"].span-lg-2 {
+    width: 14.893617021276595%;
+    *width: 14.840425531914894%;
+  }
+  .row-fluid [class*="span"].span-lg-1 {
+    width: 6.382978723404255%;
+    *width: 6.329787234042553%;
+  }
 }

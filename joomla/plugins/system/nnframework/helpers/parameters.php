@@ -1,13 +1,11 @@
 <?php
 /**
- * NoNumber Framework Helper File: Parameters
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -88,12 +86,12 @@ class NNFrameworkParameters
 
 		foreach ($xml as $key => $val)
 		{
-			if (isset($params->$key) && $params->$key != '')
+			if (isset($params->{$key}) && $params->{$key} != '')
 			{
 				continue;
 			}
 
-			$params->$key = $val;
+			$params->{$key} = $val;
 		}
 
 		return NNCache::set(
@@ -255,15 +253,15 @@ class NNFrameworkParameters
 			$key = $this->_getKeyFromXML($item);
 			$val = $this->_getValFromXML($item);
 
-			if (isset($object->$key))
+			if (isset($object->{$key}))
 			{
-				if (!is_array($object->$key))
+				if (!is_array($object->{$key}))
 				{
-					$object->$key = array($object->$key);
+					$object->{$key} = array($object->{$key});
 				}
 				$object->{$key}[] = $val;
 			}
-			$object->$key = $val;
+			$object->{$key} = $val;
 		}
 
 		return NNCache::set(
@@ -304,17 +302,17 @@ class NNFrameworkParameters
 				$k = $this->_getKeyFromXML($child);
 				$v = $this->_getValFromXML($child);
 
-				if (isset($val->$k))
+				if (isset($val->{$k}))
 				{
-					if (!is_array($val->$k))
+					if (!is_array($val->{$k}))
 					{
-						$val->$k = array($val->$k);
+						$val->{$k} = array($val->{$k});
 					}
 					$val->{$k}[] = $v;
 				}
 				else
 				{
-					$val->$k = $v;
+					$val->{$k} = $v;
 				}
 			}
 		}

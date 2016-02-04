@@ -19,7 +19,7 @@
 		return decodeURIComponent(s.replace(pluses, ' '));
 	}
 
-	var config = $.cookie = function (key, value, options) {
+	var config = $.cookie = function(key, value, options) {
 
 		// write
 		if (value !== undefined) {
@@ -39,9 +39,9 @@
 			return (document.cookie = [
 				encodeURIComponent(key), '=', config.raw ? value : encodeURIComponent(value),
 				options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
-				options.path    ? '; path=' + options.path : '',
-				options.domain  ? '; domain=' + options.domain : '',
-				options.secure  ? '; secure' : ''
+				options.path ? '; path=' + options.path : '',
+				options.domain ? '; domain=' + options.domain : '',
+				options.secure ? '; secure' : ''
 			].join(''));
 		}
 
@@ -61,7 +61,7 @@
 
 	config.defaults = {};
 
-	$.removeCookie = function (key, options) {
+	$.removeCookie = function(key, options) {
 		if ($.cookie(key) !== null) {
 			$.cookie(key, null, options);
 			return true;

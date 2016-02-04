@@ -1,13 +1,11 @@
 <?php
 /**
- * Element: Field
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -36,6 +34,26 @@ class NNFormField extends JFormField
 	protected function getInput()
 	{
 		return false;
+	}
+
+	protected function getOptions()
+	{
+		// This only returns 1 option!!!
+		if (empty($this->element->option))
+		{
+			return array();
+		}
+
+		$option = $this->element->option;
+
+		$fieldname = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $this->fieldname);
+		$value     = (string) $option['value'];
+		$text      = trim((string) $option) ? trim((string) $option) : $value;
+
+		return array(array(
+			'value' => $value,
+			'text'  => '- ' . JText::alt($text, $fieldname) . ' -',
+		));
 	}
 
 	public function get($val, $default = '')

@@ -1,12 +1,10 @@
 /**
- * Stylesheet for Element: Color
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -79,7 +77,7 @@ if(jQuery) (function($) {
 				// Get an RGB(A) string based on the current color/opacity
 				case 'rgbString':
 				case 'rgbaString':
-					return rgbString($(this), method === 'rgbaString')
+					return rgbString($(this), method === 'rgbaString');
 
 				// Get/set settings on the fly
 				case 'settings':
@@ -770,7 +768,7 @@ if(jQuery) (function($) {
 			$(this).removeData('minicolors-target');
 		})
 		// Toggle panel when swatch is clicked
-		.on('mousedown.minicolors touchstart.minicolors', '.minicolors-swatch', function(event) {
+		.on('mousedown.minicolors touchstart.minicolors', '.minicolors-swatch', function() {
 			var input = $(this).parent().find('.minicolors-input'),
 				minicolors = input.parent();
 			if( minicolors.hasClass('minicolors-focus') ) {
@@ -780,13 +778,13 @@ if(jQuery) (function($) {
 			}
 		})
 		// Show on focus
-		.on('focus.minicolors', '.minicolors-input', function(event) {
+		.on('focus.minicolors', '.minicolors-input', function() {
 			var input = $(this);
 			if( !input.data('minicolors-initialized') ) return;
 			show(input);
 		})
 		// Fix hex and hide on blur
-		.on('blur.minicolors', '.minicolors-input', function(event) {
+		.on('blur.minicolors', '.minicolors-input', function() {
 			var input = $(this),
 				settings = input.data('minicolors-settings');
 			if( !input.data('minicolors-initialized') ) return;
@@ -817,13 +815,13 @@ if(jQuery) (function($) {
 			}
 		})
 		// Update on keyup
-		.on('keyup.minicolors', '.minicolors-input', function(event) {
+		.on('keyup.minicolors', '.minicolors-input', function() {
 			var input = $(this);
 			if( !input.data('minicolors-initialized') ) return;
 			updateFromInput(input, true);
 		})
 		// Update on paste
-		.on('paste.minicolors', '.minicolors-input', function(event) {
+		.on('paste.minicolors', '.minicolors-input', function() {
 			var input = $(this);
 			if( !input.data('minicolors-initialized') ) return;
 			setTimeout( function() {

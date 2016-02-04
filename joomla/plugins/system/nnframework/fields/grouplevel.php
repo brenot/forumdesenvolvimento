@@ -1,20 +1,17 @@
 <?php
 /**
- * Element: Group Level
- * Displays a select box of backend group levels
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-require_once JPATH_PLUGINS . '/system/nnframework/helpers/field.php';
+require_once dirname(__DIR__) . '/helpers/field.php';
 
 class JFormFieldNN_GroupLevel extends NNFormField
 {
@@ -39,7 +36,7 @@ class JFormFieldNN_GroupLevel extends NNFormField
 			array_unshift($options, $option);
 		}
 
-		require_once JPATH_PLUGINS . '/system/nnframework/helpers/html.php';
+		require_once dirname(__DIR__) . '/helpers/html.php';
 
 		return NNHtml::selectlist($options, $this->name, $this->value, $this->id, $size, $multiple);
 	}

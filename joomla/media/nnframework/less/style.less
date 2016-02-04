@@ -1,12 +1,10 @@
 /**
- * Main stylesheet
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 @import "init.less";
@@ -57,17 +55,6 @@ div.nn_well {
 
 .nn_textarea {
 	.box-sizing(border-box);
-}
-
-.nn_resize_textarea {
-	cursor: pointer;
-
-	&.nn_maximize .nn_resize_textarea_minimize {
-		display: none;
-	}
-	&.nn_minimize .nn_resize_textarea_maximize {
-		display: none;
-	}
 }
 
 .header .icon-nonumber:before {
@@ -167,35 +154,6 @@ div.nn_well {
 	background: transparent url(../images/icon-color.png) no-repeat;
 	width:      16px !important;
 	height:     16px !important;
-}
-
-body:not(.tpl_nonumber) {
-	.j-main-container {
-		.chzn-container-single .chzn-single {
-			padding: 2px 12px;
-		}
-	}
-	.chzn-container-single .chzn-single div {
-		width: 20px;
-	}
-	.chzn-container-single .chzn-single div b {
-		background:     none;
-		display:        inline-block;
-		width:          0;
-		height:         0;
-		vertical-align: top;
-		border-top:     4px solid @black;
-		border-right:   4px solid transparent;
-		border-left:    4px solid transparent;
-		content:        "";
-		margin-top:     12px;
-	}
-	.chzn-container-active.chzn-with-drop .chzn-single div b {
-		border-top:    none;
-		border-bottom: 4px solid @black;
-		border-right:  4px solid transparent;
-		border-left:   4px solid transparent;
-	}
 }
 
 .chzn-small {
@@ -304,5 +262,140 @@ input.nn_keyfield {
 		margin-top: 3px;
 		font-size:  0.7em;
 		.opacity(60);
+	}
+}
+
+.nn_simplecategory_new {
+	margin-top: 4px;
+}
+
+/* better responsiveness */
+@media (min-width: 768px) and (max-width: 1200px) {
+	.row-fluid [class*="span"] {
+		&.span-md-12 {
+			width:       100%;
+			*width:      99.94680851063829%;
+			margin-left: 0;
+		}
+
+		&.span-md-11 {
+			width:  91.48936170212765%;
+			*width: 91.43617021276594%;
+		}
+
+		&.span-md-10 {
+			width:  82.97872340425532%;
+			*width: 82.92553191489361%;
+		}
+
+		&.span-md-9 {
+			width:  74.46808510638297%;
+			*width: 74.41489361702126%;
+		}
+
+		&.span-md-8 {
+			width:  65.95744680851064%;
+			*width: 65.90425531914893%;
+		}
+
+		&.span-md-7 {
+			width:  57.44680851063829%;
+			*width: 57.39361702127659%;
+		}
+
+		&.span-md-6 {
+			width:  48.93617021276595%;
+			*width: 48.88297872340425%;
+		}
+
+		&.span-md-5 {
+			width:  40.42553191489362%;
+			*width: 40.37234042553192%;
+		}
+
+		&.span-md-4 {
+			width:  31.914893617021278%;
+			*width: 31.861702127659576%;
+		}
+
+		&.span-md-3 {
+			width:  23.404255319148934%;
+			*width: 23.351063829787233%;
+		}
+
+		&.span-md-2 {
+			width:  14.893617021276595%;
+			*width: 14.840425531914894%;
+		}
+
+		&.span-md-1 {
+			width:  6.382978723404255%;
+			*width: 6.329787234042553%;
+		}
+	}
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+	.row-fluid [class*="span"] {
+		&.span-lg-12 {
+			width:       100%;
+			*width:      99.94680851063829%;
+			margin-left: 0;
+		}
+
+		&.span-lg-11 {
+			width:  91.48936170212765%;
+			*width: 91.43617021276594%;
+		}
+
+		&.span-lg-10 {
+			width:  82.97872340425532%;
+			*width: 82.92553191489361%;
+		}
+
+		&.span-lg-9 {
+			width:  74.46808510638297%;
+			*width: 74.41489361702126%;
+		}
+
+		&.span-lg-8 {
+			width:  65.95744680851064%;
+			*width: 65.90425531914893%;
+		}
+
+		&.span-lg-7 {
+			width:  57.44680851063829%;
+			*width: 57.39361702127659%;
+		}
+
+		&.span-lg-6 {
+			width:  48.93617021276595%;
+			*width: 48.88297872340425%;
+		}
+
+		&.span-lg-5 {
+			width:  40.42553191489362%;
+			*width: 40.37234042553192%;
+		}
+
+		&.span-lg-4 {
+			width:  31.914893617021278%;
+			*width: 31.861702127659576%;
+		}
+
+		&.span-lg-3 {
+			width:  23.404255319148934%;
+			*width: 23.351063829787233%;
+		}
+
+		&.span-lg-2 {
+			width:  14.893617021276595%;
+			*width: 14.840425531914894%;
+		}
+
+		&.span-lg-1 {
+			width:  6.382978723404255%;
+			*width: 6.329787234042553%;
+		}
 	}
 }

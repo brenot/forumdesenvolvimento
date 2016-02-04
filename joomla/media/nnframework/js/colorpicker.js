@@ -1,12 +1,10 @@
 /**
- * JavaScript file for Element: ColorPicker
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -18,6 +16,8 @@
  */
 
 (function($) {
+	"use strict";
+
 	var nnColorPicker = function(element, options) {
 		this.select = $(element);
 		this.options = $.extend({}, $.fn.nncolorpicker.defaults, options);
@@ -74,7 +74,7 @@
 			var pos = this.icon.offset();
 			this.panel.css({
 				left: pos.left + this.icon.width() / 2 - bootstrapArrowWidth, // Middle of the icon
-				top: pos.top + this.icon.outerHeight()
+				top : pos.top + this.icon.outerHeight()
 			});
 
 			this.panel.show(this.options.delay);
@@ -153,8 +153,8 @@
 	$.fn.nncolorpicker = function(option) {
 		// For HTML element passed to the plugin
 		return this.each(function() {
-			var self = $(this),
-				data = self.data('nncolorpicker'),
+			var self    = $(this),
+				data    = self.data('nncolorpicker'),
 				options = typeof option === 'object' && option;
 			if (!data) {
 				self.data('nncolorpicker', (data = new nnColorPicker(this, options)));

@@ -1,19 +1,18 @@
 <?php
 /**
- * NoNumber Framework Helper File: Assignments: HomePage
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-require_once JPATH_PLUGINS . '/system/nnframework/helpers/assignment.php';
+require_once dirname(__DIR__) . '/string.php';
+require_once dirname(__DIR__) . '/assignment.php';
 
 class NNFrameworkAssignmentsHomePage extends NNFrameworkAssignment
 {
@@ -84,7 +83,10 @@ class NNFrameworkAssignmentsHomePage extends NNFrameworkAssignment
 			if (empty($sef))
 			{
 				$langs = array_keys(JLanguageHelper::getLanguages('sef'));
-				$path  = JString::substr($uri->toString(array('scheme', 'user', 'pass', 'host', 'port', 'path')), JString::strlen($uri->base()));
+				$path  = NNString::substr(
+					$uri->toString(array('scheme', 'user', 'pass', 'host', 'port', 'path')),
+					NNString::strlen($uri->base())
+				);
 				$path  = preg_replace('#^index\.php/?#', '', $path);
 				$parts = explode('/', $path);
 				$part  = reset($parts);

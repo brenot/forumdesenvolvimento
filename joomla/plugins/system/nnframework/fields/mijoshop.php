@@ -1,19 +1,17 @@
 <?php
 /**
- * Element: MijoShop
- *
  * @package         NoNumber Framework
- * @version         15.12.7724
- *
+ * @version         16.2.2173
+ * 
  * @author          Peter van Westen <peter@nonumber.nl>
  * @link            http://www.nonumber.nl
- * @copyright       Copyright © 2015 NoNumber All Rights Reserved
+ * @copyright       Copyright © 2016 NoNumber All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-require_once JPATH_PLUGINS . '/system/nnframework/helpers/groupfield.php';
+require_once dirname(__DIR__) . '/helpers/groupfield.php';
 
 class JFormFieldNN_MijoShop extends NNFormGroupField
 {
@@ -42,7 +40,7 @@ class JFormFieldNN_MijoShop extends NNFormGroupField
 	function getCategories()
 	{
 		$query = $this->db->getQuery(true)
-			->select('COUNT(*)')
+			->select('COUNT(c.category_id)')
 			->from('#__mijoshop_category AS c')
 			->join('INNER', '#__mijoshop_category_description AS cd ON c.category_id = cd.category_id')
 			->join('INNER', '#__mijoshop_category_to_store AS cts ON c.category_id = cts.category_id')
@@ -70,7 +68,7 @@ class JFormFieldNN_MijoShop extends NNFormGroupField
 	function getProducts()
 	{
 		$query = $this->db->getQuery(true)
-			->select('COUNT(*)')
+			->select('COUNT(p.product_id)')
 			->from('#__mijoshop_product AS p')
 			->join('INNER', '#__mijoshop_product_description AS pd ON p.product_id = pd.product_id')
 			->join('INNER', '#__mijoshop_product_to_store AS pts ON p.product_id = pts.product_id')->where('p.status = 1')
