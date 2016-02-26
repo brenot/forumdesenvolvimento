@@ -11054,7 +11054,7 @@ fieldset[disabled] .books-view span.addtocart-button input.notify-button.active 
   display: none;
 }
 .search-form .form-group input.form-control:-ms-input-placeholder {
-  display: none;
+  
 }
 .search-form .form-group:hover,
 .search-form .form-group.hover {
