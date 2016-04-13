@@ -10463,10 +10463,6 @@ fieldset[disabled] .books-view span.addtocart-button input.notify-button.active 
 .ultimas-noticias {
   margin-top: 30px;
 }
-.composicao-slider {
-  margin-top: 0;
-  padding-top: 40px !important;
-}
 .oqueeoforum {
   padding-bottom: 30px !important;
   padding-top: 70px !important;
@@ -10475,7 +10471,7 @@ fieldset[disabled] .books-view span.addtocart-button input.notify-button.active 
   margin-bottom: 30px !important;
 }
 .rioemfoco {
-  background: #D8E2E8 !important;
+  
   padding-bottom: 60px !important;
   padding-top: 50px !important;
 }
@@ -10646,6 +10642,9 @@ fieldset[disabled] .books-view span.addtocart-button input.notify-button.active 
 .fundo-cinza2 {
   background: #E8ECEE !important;
 }
+.fundo-cinza3 {
+  background: #D8E2E8 !important;
+}
 .uber-cliens.multi-row .row {
   border-bottom: 0px solid #dadedf !important;
 }
@@ -10658,13 +10657,16 @@ fieldset[disabled] .books-view span.addtocart-button input.notify-button.active 
   text-align: center;
 }
 
+.composicao-slider {
+  margin-top: 0;
+}
 .composicao-slider .section-title {
   font-size: 32px !important;
   font-weight: 700 !important;
-  margin-bottom: 0px !important;
+  margin-bottom: 60px !important;
 }
 .section-inner.composicao-slider {
-  background: #ecf0f1 none repeat scroll 0 0 !important;
+  
   padding-bottom: 0px !important;
 }
 .composicao-slider .carousel-indicators .active {
@@ -10962,6 +10964,10 @@ fieldset[disabled] .books-view span.addtocart-button input.notify-button.active 
   margin-top: 35px;
 }
 
+.camarassetoriais {
+  padding-bottom: 60px;
+  padding-top: 50px;
+}
 .camarassetoriais .bt-contentslider {
   margin-top: 0 !important;
 }
