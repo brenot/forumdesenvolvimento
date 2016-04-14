@@ -10656,6 +10656,13 @@ fieldset[disabled] .books-view span.addtocart-button input.notify-button.active 
   padding-top: 26px;
   text-align: center;
 }
+.agendadoforum h3 {
+  color: #014B79 !important;
+  font-size: 45px;
+  color: #27292e;
+  font-weight: 700;
+  text-align: center;
+}
 
 .composicao-slider {
   margin-top: 0;
